@@ -1,3 +1,16 @@
+# folder of pipeline output
+/pipelines/*
+
+# folder reserved for sequence data
+/BaseSpace/*
+
+# common file
+.DS_Store
+
+# java project files
+.classpath
+.project
+
 # History files
 .Rhistory
 .Rapp.history
