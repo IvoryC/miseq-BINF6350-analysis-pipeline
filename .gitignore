@@ -4,6 +4,9 @@
 # folder reserved for sequence data
 /BaseSpace/*
 
+# File reserved for properties specific to a given machine
+local.properties
+
 # common file
 .DS_Store
 
