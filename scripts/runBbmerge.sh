@@ -6,14 +6,14 @@
 # In case cluster job detached script from intended context
 [ ${#PBS_O_WORKDIR} -gt 0 ] && cd $PBS_O_WORKDIR
 
+# Find the MatchPairs module in this pipeline
+PIPE=$(dirname $(dirname $PWD))
+INDIR=$(ls -d $PIPE/*_MatchPairs/output)
+
 # If bbmerge.sh is on the path, use it. 
 # Surprisingly, "which" did not work in this docker container.
 # Otherwise, take arg 2 as the path to the executable
 bbmerge.sh --version && bbmergeExe=bbmerge.sh || bbmergeExe=$2 && $bbmergeExe --version
-
-# Find the MatchPairs module in this pipeline
-PIPE=$(dirname $(dirname $PWD))
-INDIR=$(ls -d $PIPE/*_MatchPairs/output)
 
 echo "Given sample: $1"
 OUT=../output/$1.fastq.gz
@@ -29,6 +29,9 @@ while read line; do
   then
   	echo "R1: $R1"
   	echo "R2: $R2"
-  	$bbmergeExe reads=30 in1=$R1 in2=$R2 out=$OUT
+  	$bbmergeExe in1=$R1 in2=$R2 out=$OUT
+  	# for faster tests add: reads=30
   fi
 done < $REF
+
+echo "done."

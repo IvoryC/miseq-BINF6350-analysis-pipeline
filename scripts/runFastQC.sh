@@ -29,6 +29,6 @@ $fastqcExe --version
 echo "Given file: $1"
 echo "Sequence file path is: $FQ"
 
-$fastqcExe $FQ --outdir ../output
+$fastqcExe $FQ --dir ../temp --outdir ../output
 
 echo "done."

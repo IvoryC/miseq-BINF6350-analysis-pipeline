@@ -21,4 +21,4 @@ echo "Using RDP jar file found at: $RDP"
 
 java -jar $RDP --hier_outfile $OUTDIR/$1_hierCounts.txt -o $OUTDIR/$1_reported.txt $FQ
 
-echo done.
+echo "done."
